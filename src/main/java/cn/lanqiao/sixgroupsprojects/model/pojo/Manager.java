@@ -9,12 +9,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Manager {
 
-  private long id;
+  private Integer id;
   private String loginName;
   private String phone;
   private String email;
   private String role;
   private java.sql.Timestamp joinTime;
-  private long status;
+  private Integer status;
 
 }

@@ -9,10 +9,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Orders {
 
-  private long orderId;
+  private Integer orderId;
   private String recipientName;
-  private double totalAmount;
-  private double payableAmount;
+  private String totalAmount;
+  private String payableAmount;
   private String orderStatus;
   private String paymentStatus;
   private String shippingStatus;

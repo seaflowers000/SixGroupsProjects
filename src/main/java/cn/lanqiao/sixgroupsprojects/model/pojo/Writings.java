@@ -9,13 +9,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Writings {
 
-  private long id;
+  private Integer id;
   private String title;
   private java.sql.Timestamp publishTime;
   private String category;
-  private long sortOrder;
-  private long isRecommended;
-  private long isTop;
-  private long isApproved;
+  private Integer sortOrder;
+  private Integer isRecommended;
+  private Integer isTop;
+  private Integer isApproved;
 
 }
