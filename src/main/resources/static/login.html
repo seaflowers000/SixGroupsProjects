@@ -20,9 +20,10 @@
         <div id="darkbannerwrap"></div>
         
         <form method="post" class="layui-form" >
-            <input name="username" placeholder="用户名"  type="text" lay-verify="required" class="layui-input" >
+
+            <input name="username" id="username" placeholder="用户名"  type="text" lay-verify="required" class="layui-input" >
             <hr class="hr15">
-            <input name="password" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
+            <input name="password" id="password" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
             <hr class="hr15">
 
             <div style="margin: 10px 0;">
@@ -78,14 +79,14 @@
         let verifyCode = document.querySelector("#verifyCode").value;
         let phone=document.querySelector("#phone").value;
         axios({
-            url: "http://localhost:8080/mag/login",
+            url: "http://localhost:8080/Six/login",
             method: "post",
             data: {
-                account: username,
+                loginName: username,  // 确保与 Manager 类的字段名匹配
                 password: password,
                 remember: remember,
-                verifyCode:verifyCode,
-                phone:phone
+                verifyCode: verifyCode,
+                phone: phone
             }
         }).then((result) => {
             console.log(result)
@@ -148,7 +149,7 @@
 
         // 发送验证码
         axios({
-            url: "http://localhost:8081/tUser/sendCode",
+            url: "http://localhost:8080/Six/sendCode",
             method: "post",
             data: {
                 account: username,

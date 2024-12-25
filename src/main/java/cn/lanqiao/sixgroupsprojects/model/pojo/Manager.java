@@ -1,8 +1,6 @@
 package cn.lanqiao.sixgroupsprojects.model.pojo;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
@@ -17,5 +15,6 @@ public class Manager {
   private String role;
   private java.sql.Timestamp joinTime;
   private Integer status;
-  private String Code;
+  private String code;
+
 }
