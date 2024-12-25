@@ -19,9 +19,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URLEncoder;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static cn.lanqiao.sixgroupsprojects.model.common.FinalClass.MOBILE_PHONE_CAPTCHA_PREFIX;
+import static cn.lanqiao.sixgroupsprojects.model.common.FinalClass.USER_TOKEN;
 
 
 @RestController
@@ -87,9 +89,9 @@ public class SixTuserController {
                     response.addCookie(cookie3);
 
                     //tUserVO为了脱敏
-                    MagVO tUserVO=new TUserVO();
+                    MagVO tUserVO=new MagVO();
                     tUserVO.setId(userLogin.getId());
-                    tUserVO.setNickname(userLogin.getNickname());
+                    tUserVO.setRole(userLogin.getRole());
                     System.out.println("需要响应的数据:"+tUserVO);
 
                     //登入后存信息 拦截器需要
@@ -114,116 +116,6 @@ public class SixTuserController {
             return new ResponseUtils(400,"登入查询异常");
         }
     }
-
-    //查询所有
-    @RequestMapping("/select")
-    public ResponseUtils select(){
-        try{
-            List<TUserVO> tUsers=tuserService.selectAll();
-
-            if (tUsers==null){
-                return new ResponseUtils(500,"查询失败");
-            }else {
-                return new ResponseUtils(200,"查询成功",tUsers);
-            }}catch(Exception e){
-            e.printStackTrace();
-            return new ResponseUtils(400,"管理员查询异常");}
-    }
-
-    //删除
-    @RequestMapping("/delete")
-    public ResponseUtils delete(@RequestBody TUserLogin tUser){
-        try{
-            int result=tuserService.delete((int) tUser.getId());
-
-            if (result==1){
-                return new ResponseUtils(200,"删除成功");
-            }else {
-                return new ResponseUtils(500,"查询成功");
-            }}catch(Exception e){
-            e.printStackTrace();
-            return new ResponseUtils(400,"删除异常");}
-    }
-
-    @RequestMapping("/update")
-    public ResponseUtils update(@RequestBody TUserVO tUserVO){
-        try{
-            int result=tuserService.update(tUserVO);
-
-            if (result==1){
-                return new ResponseUtils(200,"修改成功");
-            }else {
-                return new ResponseUtils(500,"修改成功");
-            }}catch(Exception e){
-            e.printStackTrace();
-            return new ResponseUtils(400,"修改异常");}
-    }
-
-
-
-    @RequestMapping("/add")
-    public ResponseUtils add(@RequestBody TUserVO tUserVO){
-        try{
-            int result=tuserService.add(tUserVO);
-
-            if (result==1){
-                return new ResponseUtils(200,"添加成功");
-            }else {
-                return new ResponseUtils(500,"添加成功");
-            }}catch(Exception e){
-            e.printStackTrace();
-            return new ResponseUtils(400,"添加异常");}
-    }
-
-    @RequestMapping("/checkname")
-    public ResponseUtils checkname(@RequestBody TUserVO tUserVO){
-        try{
-            int result=tuserService.checkname(tUserVO);
-
-            if (result==1){
-                return new ResponseUtils(305,"还账号已存在");
-            }else {
-                return new ResponseUtils(200,"该账号可用");
-            }}catch(Exception e){
-            e.printStackTrace();
-            throw  new RuntimeException();}
-    }
-
-    @RequestMapping("/selectById")
-    public ResponseUtils selectById(@RequestBody TUserLogin tUserlogin){
-        try{
-            TUser tUser=tuserService.selectById(tUserlogin.getId());
-
-            if (tUser!=null){
-                return new ResponseUtils(200,"查询成功",tUser);
-            }else {
-                return new ResponseUtils(400,"查询失败");
-            }}catch(Exception e){
-            e.printStackTrace();
-            throw  new RuntimeException();}
-    }
-    @RequestMapping("/selectLike")
-    public ResponseUtils selectLike(@RequestBody TUserLogin tUserlogin){
-        try{
-            List<TUser> tUsers=tuserService.selectByLike(tUserlogin.getUserText());
-
-            if (tUsers!=null){
-                return new ResponseUtils(200,"查询成功",tUsers);
-            }else {
-                return new ResponseUtils(400,"查询失败");
-            }}catch(Exception e){
-            e.printStackTrace();
-            throw  new RuntimeException();}
-    }
-    @RequestMapping("/sendCode")
-    public ResponseUtils sendCode(@RequestBody TAdminQuery tAdminQuery,HttpServletRequest request){
-        TUser tUser=tuserService.selectByPhone(tAdminQuery,request);
-        if (tUser==null){
-            return new ResponseUtils(500,"手机号不存在或者手机号与用户不匹配");
-        }
-        return new ResponseUtils(200,"验证码已发送");
-    }
-
 
 }
 
