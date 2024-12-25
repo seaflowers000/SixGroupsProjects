@@ -57,28 +57,28 @@
 </body>
 </html>
 <script>
-    let btn = document.querySelector(".btn");
+    let btn = document.querySelector(".loginin");
     btn.onclick = function () {
         //获取username和password的值发送给服务器(后端)
         let username = document.querySelector("#username").value;
         let password = document.querySelector("#password").value;
-        let remember = document.querySelector("#remember").checked;
-        let verifyCode = document.querySelector("#verifyCode").value;
-        let phone=document.querySelector("#phone").value;
+        // let remember = document.querySelector("#remember").checked;
+        // let verifyCode = document.querySelector("#verifyCode").value;
+        // let phone=document.querySelector("#phone").value;
         axios({
             url: "http://localhost:8080/mag/login",
             method: "post",
             data: {
                 account: username,
                 password: password,
-                remember: remember,
-                verifyCode:verifyCode,
-                phone:phone
+                // remember: remember,
+                // verifyCode:verifyCode,
+                // phone:phone
             }
         }).then((result) => {
             console.log(result)
             if (result.data.code == 200) {
-                sessionStorage.setItem('token',result.data.data.token);
+                // sessionStorage.setItem('token',result.data.data.token);
                 //跳转首页
                 location.href = "/index.html"
             } else if(result.data.code == 500){
