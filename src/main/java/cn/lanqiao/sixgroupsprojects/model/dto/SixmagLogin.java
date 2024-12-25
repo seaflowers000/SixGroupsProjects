@@ -1,5 +1,8 @@
 package cn.lanqiao.sixgroupsprojects.model.dto;
 
+import lombok.Data;
+
+@Data
 public class SixmagLogin {
     private String loginName;
     private String password;

@@ -5,4 +5,6 @@ import cn.lanqiao.sixgroupsprojects.model.pojo.Manager;
 
 public interface SixmagService {
     Manager login(SixmagLogin tUser);
+    int register(Manager tUser);
+
 }

@@ -21,4 +21,18 @@ public class SixmagServiceimpl implements SixmagService {
             return null;
         }
     }
+
+    @Override
+    public int register(Manager tUser) {
+        try{
+            int result = sixmagMapper.register(tUser);
+            if (result>0){
+                return 1;
+            }else{
+                return 0;
+            }
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+    }
 }
