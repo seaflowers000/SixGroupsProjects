@@ -29,6 +29,7 @@ public class VipNameController {
             return new ResponseUtils(200,"查询成功",vipNameService);
         }
 
+
     }
 
 }

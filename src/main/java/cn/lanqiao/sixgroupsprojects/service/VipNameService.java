@@ -8,5 +8,6 @@ public interface VipNameService {
     /**
      * 查询所有会员列表
      */
+
     List<VipNameMapper> selectAll();
 }
