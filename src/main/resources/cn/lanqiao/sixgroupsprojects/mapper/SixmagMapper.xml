@@ -12,7 +12,7 @@
         <result property="role" column="role" jdbcType="VARCHAR"/>
         <result property="joinTime" column="joinTime" jdbcType="VARCHAR"/>
         <result property="status" column="status" jdbcType="INTEGER"/>
-    </resultMap>
+    </resultMap>、
 
     <sql id="Base_Column_List">
         id,loginName,phone,email,
