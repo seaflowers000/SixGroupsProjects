@@ -1,25 +1,42 @@
 package cn.lanqiao.sixgroupsprojects.utils;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-/**
- * @Author: 李某人
- * @Date: 2024/09/18/9:14
- * @Description:
- * 响应工具类(用来规范响应的数据)
- */
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class ResponseUtils<T> {
-    private Integer code; // 状态码 200 成功 304 失败
-    private String message; // 信息 响应的信息结果
-    private T data;//携带的数据
+    private Integer code;
+    private String msg;
+    private T data;
 
-    public ResponseUtils(Integer code, String message) {
+    public ResponseUtils(Integer code, String msg) {
         this.code = code;
-        this.message = message;
+        this.msg = msg;
+    }
+
+    public ResponseUtils(Integer code, String msg, T data) {
+        this.code = code;
+        this.msg = msg;
+        this.data = data;
+    }
+
+    public Integer getCode() {
+        return code;
+    }
+
+    public void setCode(Integer code) {
+        this.code = code;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
     }
 }

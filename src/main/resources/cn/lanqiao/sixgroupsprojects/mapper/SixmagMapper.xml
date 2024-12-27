@@ -10,12 +10,23 @@
         <result property="phone" column="phone" jdbcType="VARCHAR"/>
         <result property="email" column="email" jdbcType="VARCHAR"/>
         <result property="role" column="role" jdbcType="VARCHAR"/>
-        <result property="joinTime" column="joinTime" jdbcType="VARCHAR"/>
+        <result property="joinTime" column="joinTime" jdbcType="TIMESTAMP"/>
         <result property="status" column="status" jdbcType="INTEGER"/>
-    </resultMap>、
+    </resultMap>
 
     <sql id="Base_Column_List">
-        id,loginName,phone,email,
-          role,status,joinTime
+        id,loginName,phone,email,role,status,joinTime
     </sql>
+
+    <select id="login" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from manager
+        where loginName = #{loginName} and password = #{password} and status = 0
+    </select>
+
+    <insert id="register" parameterType="cn.lanqiao.sixgroupsprojects.model.pojo.Manager">
+        insert into manager(loginName, password, role, status)
+        values(#{loginName}, #{password}, '游客', 0)
+    </insert>
 </mapper>

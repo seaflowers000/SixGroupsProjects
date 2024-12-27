@@ -2,16 +2,20 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>管理员登录-WeAdmin Frame型后台管理系统-WeAdmin 1.0</title>
+	<title>管理员登录-网易推文管理系统</title>
 	<meta name="renderer" content="webkit|ie-comp|ie-stand">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="./css/font.css">
-	<link rel="stylesheet" href="./css/weadmin.css">
-    <script src="../lib/layui/layui.js" charset="utf-8"></script>
+    <script src="./lib/layui/layui.js" charset="utf-8"></script>
 
+    <!-- 修正资源路径，使用上级目录的 lib -->
+    <link rel="stylesheet" href="./lib/layui/css/layui.css">
+    <link rel="stylesheet" href="css/font.css">
+    <link rel="stylesheet" href="css/weadmin.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body class="login-bg">
     
@@ -44,11 +48,13 @@
             </div>
         </form>
     </div>
-
+    <script src="js/axios.min.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="/js/axiosConfig.js"></script>
     <script type="text/javascript">
         
         	layui.extend({
-				admin: '{/}./static/js/admin'
+				admin: '/js/admin'
 			});
             layui.use(['form','admin'], function(){
               var form = layui.form
@@ -65,7 +71,8 @@
                 return false;
               });
             });   
-    </script>  
+    </script>
+
     <!-- 底部结束 -->
 </body>
 </html>

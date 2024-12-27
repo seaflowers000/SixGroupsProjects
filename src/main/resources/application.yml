@@ -1,42 +1,50 @@
-server:
-  port: 8080
-  servlet:
-    context-path: /
-#email:
-#  code: ioqywbpnvmwvbaja
-#  user: 544548586@qq.com
-#  host: smtp.qq.com
-#  auth: true
-spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://47.109.206.82:3306/SixGroupsProjects?useUnicode=true&characterEncoding=utf8
-    username: root
-    password: 20010720Lmx
-  thymeleaf:
-    cache: false
-    check-template-location: 'true'
-    mode: HTML5
-    prefix: 'classpath:/templates/'
-    suffix: '/html'
+  server:
+    port: 8080
     servlet:
-      content-type: 'text/html'
-    encoding: UTF-8
-  servlet:
-    multipart:
-      max-file-size: 10000000
-  transaction:
-    rollback-on-commit-failure: true
-    default-timeout: 30
-  data:
-    redis:
-      host: 192.168.154.128
-      port: 6379
-      password: 123456
-      lettuce:
-        pool:
-          max-active: 8
-          max-idle: 8
-          min-idle: 0
-          max-wait: 1000ms
-      database: 0
+      context-path: /
+  #email:
+  #  code: ioqywbpnvmwvbaja
+  #  user: 544548586@qq.com
+  #  host: smtp.qq.com
+  #  auth: true
+  spring:
+    mvc:
+      static-path-pattern: /**
+    web:
+      resources:
+        static-locations:
+          - classpath:/static/
+          - classpath:/lib/
+        
+    datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://47.109.206.82:3306/SixGroupsProjects?useUnicode=true&characterEncoding=utf8
+      username: root
+      password: 20010720Lmx
+    thymeleaf:
+      cache: false
+      check-template-location: 'true'
+      mode: HTML5
+      prefix: 'classpath:/templates/'
+      suffix: '/html'
+      servlet:
+        content-type: 'text/html'
+      encoding: UTF-8
+    servlet:
+      multipart:
+        max-file-size: 10000000
+    transaction:
+      rollback-on-commit-failure: true
+      default-timeout: 30
+    data:
+      redis:
+        host: 192.168.154.128
+        port: 6379
+        password: 123456
+        lettuce:
+          pool:
+            max-active: 8
+            max-idle: 8
+            min-idle: 0
+            max-wait: 1000ms
+        database: 0
