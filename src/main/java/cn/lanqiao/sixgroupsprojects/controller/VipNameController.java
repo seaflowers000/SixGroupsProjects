@@ -1,10 +1,9 @@
 package cn.lanqiao.sixgroupsprojects.controller;
 
-
+import cn.lanqiao.sixgroupsprojects.ResponseUtils.ResponseUtils;
 import cn.lanqiao.sixgroupsprojects.mapper.VipNameMapper;
 import cn.lanqiao.sixgroupsprojects.service.VipNameService;
 
-import cn.lanqiao.sixgroupsprojects.utils.ResponseUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
